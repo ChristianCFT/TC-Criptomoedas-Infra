@@ -1,0 +1,92 @@
+### Cadastro
+POST http://localhost:3001/auth/create
+Content-Type: application/json
+
+{ 
+  "nome": "Thiago Amaral",
+  "email": "amaralthiago@gmail.com",
+  "senha": "12345678"
+}
+
+### ==========================================
+
+### Fazer Login
+POST http://localhost:3001/auth/login
+Content-Type: application/json
+
+{
+  "email": "amaralthiago@gmail.com",
+  "senha": "12345678"
+}
+
+### Retorna os dados do Usuario
+GET http://localhost:3001/usuarios/perfil
+
+### ==========================================
+
+### Fazer Logout
+POST  http://localhost:3001/auth/logout
+
+### ==========================================
+
+### 2. COMPRAR CRIPTOMOEDA
+# Troque o carteiraId e criptoId por IDs que existam no seu banco
+POST http://localhost:3001/compras
+Content-Type: application/json
+
+{
+  "carteiraId": 1,
+  "criptoId": 1,
+  "valorCompraBrl": 1500.00
+}
+
+### ---------------------------------------------------
+
+### 2. Vender Criptomoeda (Por Quantidade)
+# Altere os IDs e a quantidade para testar
+POST http://localhost:3001/vendas
+Content-Type: application/json
+
+{
+  "carteiraId": 1,
+  "criptoId": 6,
+  "quantidade": 3
+}
+
+### ==========================================
+
+### Buscar todas as crptomoedas do banco de dados
+GET http://localhost:3001/moedas
+
+### Adicionar Saldo 
+POST http://localhost:3001/usuarios/saldo
+Content-Type: application/json
+
+{
+    "saldo": "2000"
+}
+
+### ==========================================
+
+### Busca os dados necessários para página Inicial
+GET http://localhost:3001/dashboard
+
+### ==========================================
+
+### Criar uma Nova Carteira
+POST http://localhost:3001/carteiras
+Content-Type: application/json
+
+{
+  "nome": "Carteira Principal"
+}
+
+### ==========================================
+
+### Buscar uma Carteira Específica
+GET http://localhost:3001/carteiras/1
+
+### ==========================================
+
+### Deletar uma Carteira
+DELETE http://localhost:3001/carteiras/14

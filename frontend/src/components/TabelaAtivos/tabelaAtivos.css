@@ -1,0 +1,29 @@
+#secao-tabela-ativos {
+    display: flex;
+    justify-content: center;
+}
+
+#tabela-ativos {
+    background: white;
+    border-radius: 20px;
+    width: 95%;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-collapse: separate;
+    border-spacing: 0;       
+    overflow: hidden;        
+}
+
+#tabela-ativos thead {
+    background-color: #f8fafc;
+}
+
+#tabela-ativos th {
+    padding: 1rem;
+    text-align: left;
+    color: #555;
+}
+
+#th-acoes {
+    width: 15%;
+}

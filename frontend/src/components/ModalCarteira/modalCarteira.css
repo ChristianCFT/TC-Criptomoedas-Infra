@@ -1,0 +1,84 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-carteira {
+    width: 450px;
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,.15);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    color: #1f2937;
+}
+
+.btn-fechar {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.btn-cancelar:hover {
+    background: #fef2f2;
+    transition: 0.2s;
+}
+
+.btn-criar:hover {
+    background: #0a1c5a;
+    color: white;
+    transition: 0.2s;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-body input {
+    height: 45px;
+    border: 1px solid #dbe2ea;
+    border-radius: 10px;
+    padding: 0 10px;
+}
+
+.modal-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn-cancelar {
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 1px solid #ff0000;
+    background: white;
+    color: #ff0000;
+    cursor: pointer;
+}
+
+.btn-criar {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    background: rgb(22 75 223);
+    color: white;
+    cursor: pointer;
+}

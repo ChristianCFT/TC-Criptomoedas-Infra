@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+
+model Usuario {
+
+  id        Int        @id @default(autoincrement())
+  nome      String
+  email     String     @unique
+  senha     String
+  saldoBrl  Float      @default(0.0)
+  carteiras Carteira[]
+  createdAt DateTime   @default(now())
+}
+
+
+model Carteira {
+
+  id        Int       @id @default(autoincrement())
+  nome      String
+  usuarioId Int
+  usuario   Usuario   @relation(fields: [usuarioId], references: [id])
+  ativos    CarteiraCripto[]
+  createdAt DateTime @default(now())
+}
+
+
+model Criptomoeda {
+
+  id              Int              @id @default(autoincrement())
+  nome            String
+  simbolo         String           @unique
+  precoAtual      Float
+  imagemUrl       String
+  variacao24h     Float   
+  marketCap       Float  
+  ativos          CarteiraCripto[]
+  updatedAt       DateTime @updatedAt
+}
+
+
+model CarteiraCripto {
+
+  id          Int @id @default(autoincrement())
+  carteiraId  Int
+  criptoId    Int
+  carteira    Carteira     @relation(fields: [carteiraId], references: [id])
+  cripto      Criptomoeda  @relation(fields: [criptoId], references: [id])
+  quantidade          Float
+  createdAt DateTime @default(now())
+  @@unique([carteiraId, criptoId])
+
+} 
+
+

@@ -1,0 +1,16 @@
+.layout{
+    display: grid;
+    grid-template-columns: minmax(230px, 260px) 1fr;
+    grid-template-rows: auto 1fr auto;
+    min-height: 120vh;
+    grid-template-areas:  
+        "nav content"
+        "nav content"  
+        "footer footer";
+}
+
+.content{
+    grid-area: content;
+} 
+
+
