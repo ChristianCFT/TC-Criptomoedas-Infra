@@ -35,7 +35,7 @@ import { prisma } from "../prisma/client";
 
 // const URL =`https://api.coingecko.com/api/v3/coins/markets?vs_currency=brl&ids=${IDS.join(",")}&sparkline=false`;
 
-const URL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=brl&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+const URL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=brl&order=market_cap_desc&per_page=250&page=1&sparkline=false"
 
 export interface CoinGeckoCoin {
     id: string;
@@ -79,16 +79,16 @@ export async function atualizarCriptomoedasNoBanco() {
                 update: {
                     precoAtual: moeda.current_price,
                     imagemUrl: moeda.image,
-                    variacao24h: moeda.price_change_percentage_24h, 
-                    marketCap: moeda.market_cap                     
+                    variacao24h: moeda.price_change_percentage_24h || 0, 
+                    marketCap: moeda.market_cap || 0                    
                 },
                 create: {
                     nome: moeda.name,
                     simbolo: moeda.symbol.toUpperCase(),
                     precoAtual: moeda.current_price,
                     imagemUrl: moeda.image,
-                    variacao24h: moeda.price_change_percentage_24h,
-                    marketCap: moeda.market_cap                     
+                    variacao24h: moeda.price_change_percentage_24h || 0,
+                    marketCap: moeda.market_cap || 0                    
                 }
             });
         }

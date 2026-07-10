@@ -1,9 +1,9 @@
-import '../TabelaAtivos/tabelaAtivos.css';
+import "./tabelaMercado.css"
 import LinhaMercado from './LinhaMercado';
 
 export default function TabelaMercado({ mercadoGlobal }) {
     return (
-        <section id="secao-tabela-ativos">
+        <section id="secao-tabela-ativos-mercado">
             <table id="tabela-ativos">
                 
                 <thead>

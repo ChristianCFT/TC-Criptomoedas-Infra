@@ -1,30 +1,49 @@
 "use client";
-import React from 'react';
+import { useState, useEffect } from 'react';
 import moeda from "../../assets/images/moeda.jpg"
 import carteiraIMG from "../../assets/images/carteira.jpg";
 import TabelaAtivos from "../../components/TabelaAtivos/TabelaAtivos";
 import "./carteira.css"
 import { CarteiraDTO } from '../../tipos/carteira';
 import { useRouter } from 'next/navigation';
+import { buscarPerfil } from '../../services/usuario.services';
+import SaldoConta from '../../components/SaldoConta/SaldoConta';
 
 interface CarteiraProps {
     carteira: CarteiraDTO;
 }
 
 function Carteira({ carteira }: CarteiraProps) {
-
     const router = useRouter();
+    const [saldoBrl, setSaldoBrl] = useState<number>(0);
+
+    useEffect(() => {
+        async function carregarSaldo() {
+            try {
+                const usuarioPerfil = await buscarPerfil(); 
+                if (usuarioPerfil && usuarioPerfil.saldoBrl !== undefined) {
+                    setSaldoBrl(usuarioPerfil.saldoBrl);
+
+                }
+            } catch (error) {
+                console.error("Erro ao buscar o saldo do perfil:", error);
+            }
+        }
+        
+        carregarSaldo();
+    }, []);
 
     return (
         <>
             {/* Cabeçalho */}
             <header className="header-carteira">
-                <h1>
-                    <span>{carteira.nome}</span>
-                </h1>
-                <p>
-                    Gerencie seus ativos e acompanhe seu desempenho
-                </p>
+                <div className="header-texto">
+                    <h1>
+                        <span>{carteira.nome}</span>
+                    </h1>
+                    <p>Gerencie seus ativos e acompanhe seu desempenho</p>
+                </div>
+                <SaldoConta valor={saldoBrl}/>
             </header>
 
             {/* Principal */}
@@ -94,7 +113,7 @@ function Carteira({ carteira }: CarteiraProps) {
                     </section>
 
                     {/* Tabela */}
-                    <TabelaAtivos ativos={carteira.ativos} />
+                    <TabelaAtivos ativos={carteira.ativos} carteiraId={carteira.id}/>
                     
 
                 </section>

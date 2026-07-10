@@ -16,7 +16,7 @@ function CardCarteira({ id, titulo, saldo}){
             </div>
             <div className="info-saldo">
                 <p className="titulo-saldo">Saldo total</p>
-                <p className="saldo">R$ <span className="valor-saldo">{Number(saldo).toFixed(2)}</span></p>
+                <p className="saldo"><span className="valor-saldo">{Number(saldo ?? 0).toLocaleString("pt-BR", {style: "currency", currency: "BRL"})}</span></p>
             </div>
             <button className="btn-ver-carteira" onClick={() => router.push(`/carteira/${id}`)}>Ver carteira</button>
         </div>

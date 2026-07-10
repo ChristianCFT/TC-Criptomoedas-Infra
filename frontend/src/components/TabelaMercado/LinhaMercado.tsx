@@ -26,7 +26,7 @@ export default function LinhaMercado({ nome, sigla, preco, variacao24h, marketCa
             </td>
             
             <td className={corVariacao}>
-                {sinal}{variacao24h}%
+                {sinal}{Number(variacao24h).toFixed(2)}%
             </td>
             
             <td className="coluna-marketcap">

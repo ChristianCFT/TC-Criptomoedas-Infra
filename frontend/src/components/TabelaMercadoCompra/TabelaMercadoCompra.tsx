@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../TabelaAtivos/tabelaAtivos.css';
+import './tabelaMercadoGlobal.css';
 import LinhaMercadoCompra from './LinhaMercadoCompra';
 import ModalComprarMoeda from '../ModalComprarMoeda/ModalComprarMoeda';
 
@@ -9,7 +9,7 @@ export default function TabelaMercadoCompra({ mercadoGlobalCompra, carteiraId })
     const [criptoSelecionada, setCriptoSelecionada] = useState(null);
 
     return (
-        <section id="secao-tabela-ativos">
+        <section id="secao-tabela-ativos-mercado-global">
             <table id="tabela-ativos">
                 
                 <thead>

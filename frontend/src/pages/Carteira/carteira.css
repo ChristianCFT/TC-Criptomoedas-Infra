@@ -1,18 +1,26 @@
 /* Cabeçalho */
-.header-carteira{
-    background-color: white;
+.header-carteira {
+    background: white;
     border-bottom: 1px solid #e5e7eb;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 10px rgba(0,0,0,.05);
     padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
 
-    h1{
-        margin-bottom: 0.3rem;
-        color: #1f2937;
-    }
+.header-carteira h1 {
+    margin-bottom: 0.4rem;
+    color: rgb(22 75 223);
+}
 
-    p{
-        color:#6b7280;
-    }
+.header-carteira p {
+    color: #6b7280;
+}
+
+.header-texto{
+    display: flex;
+    flex-direction: column;
 }
 
 /* Principal */

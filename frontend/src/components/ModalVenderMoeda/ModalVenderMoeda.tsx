@@ -2,14 +2,19 @@
 
 import { useState } from "react";
 import "./modalVenderMoeda.css";
+import { venderCriptomoeda } from "../../services/venda.services";
+import { useRouter } from "next/navigation";
 
 interface ModalVenderMoedaProps {
     fechar: () => void;
+    cripto: any,
+    carteiraId: number,
 }
 
-function ModalVenderMoeda({ fechar }: ModalVenderMoedaProps) {
+function ModalVenderMoeda({ fechar , cripto, carteiraId}: ModalVenderMoedaProps) {
 
     const [quantidade, setQuantidade] = useState("");
+    const router = useRouter();
 
     async function venderMoeda() {
 
@@ -20,11 +25,15 @@ function ModalVenderMoeda({ fechar }: ModalVenderMoedaProps) {
 
         try {
 
-            // Aqui ficará a chamada da API
-            console.log("Vender moeda:", quantidade);
+            await venderCriptomoeda({
+                carteiraId: carteiraId,
+                criptoId: cripto.id,
+                quantidade: Number(quantidade)
+            });
 
             setQuantidade("");
             fechar();
+            router.refresh();
 
         } catch (error) {
 
@@ -42,7 +51,7 @@ function ModalVenderMoeda({ fechar }: ModalVenderMoedaProps) {
 
                 <div className="modal-header">
 
-                    <h2>Vender moeda</h2>
+                    <h2>Vender {cripto?.nome}</h2>
 
                     <button
                         className="btn-fechar"

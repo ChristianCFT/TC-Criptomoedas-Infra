@@ -1,5 +1,5 @@
 /* Cabeçalho */
-.header-criptoativos {
+.header-criptoativos-compra {
     background: white;
     border-bottom: 1px solid #e5e7eb;
     box-shadow: 0 2px 10px rgba(0,0,0,.05);
@@ -9,35 +9,36 @@
     align-items: flex-start;
 }
 
-.header-criptoativos h1 {
+.header-criptoativos-compra h1 {
     margin-bottom: 0.4rem;
     color: #1f2937;
 }
 
-.header-criptoativos h1 span {
+.header-criptoativos-compra h1 span {
     color: rgb(22 75 223);
 }
 
-.header-criptoativos p {
+.header-criptoativos-compra p {
     color: #6b7280;
 }
 
-.header-texto{
+.header-texto-compra {
     display: flex;
     flex-direction: column;
 }
 
-.main-criptoativos{
+.main-criptoativos-compra {
     margin: 2rem 0;
 }
 
-#mercado-moeda-global{
+#mercado-moeda-global-compra {
     display: flex;
     justify-content: center;
 }
-#secao-tabela-ativos{
+
+#secao-tabela-ativos-compra {
     border-collapse: separate;
     border-spacing: 0;       
-    overflow: hidden;      
+    overflow: hidden;   
+    margin-bottom: 2rem;     
 }
-

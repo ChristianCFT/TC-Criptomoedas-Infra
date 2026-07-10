@@ -18,14 +18,20 @@ export default function LinhaMercadoCompra({ nome, sigla, preco, variacao24h, ma
                 </div>
             </td>
             
-            <td className="coluna-preco">R$ {preco}</td>
+            <td className="coluna-preco">{Number(preco).toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                })}</td>
             
             <td className={corVariacao}>
-                {sinal}{variacao24h}%
+                {sinal}{Number(variacao24h).toFixed(2)}%
             </td>
             
             <td className="coluna-marketcap">
-                R$ {marketCap}
+                {Number(marketCap).toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                })}
             </td>
 
             <td className="coluna-acoes">

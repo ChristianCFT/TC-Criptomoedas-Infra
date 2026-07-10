@@ -1,7 +1,16 @@
 import LinhaAtivo from './LinhaAtivo';
 import './tabelaAtivos.css'
+import { useState } from "react";
+import ModalComprarMoeda from "../ModalComprarMoeda/ModalComprarMoeda";
+import ModalVenderMoeda from '../ModalVenderMoeda/ModalVenderMoeda';
 
-export default function TabelaAtivos({ativos}) {
+export default function TabelaAtivos({ativos, carteiraId}) {
+    const [modalAberto, setModalAberto] = useState(false);
+    const [criptoSelecionada, setCriptoSelecionada] = useState(null);
+
+    const [modalVendaAberto, setModalVendaAberto] = useState(false);
+    const [criptoSelecionadaVenda, setCriptoSelecionadaVenda] = useState(null);
+
     return (
         <section id="secao-tabela-ativos">
             <table id="tabela-ativos">
@@ -25,10 +34,34 @@ export default function TabelaAtivos({ativos}) {
                             imagem={ativo.imagemUrl}
                             quantidade={ativo.quantidade}
                             total={ativo.valorTotal}
+                            abrirModal={() => {
+                                setCriptoSelecionada(ativo);
+                                setModalAberto(true);
+                            }}
+                            abrirModalVenda={() => {
+                                setCriptoSelecionadaVenda(ativo);
+                                setModalVendaAberto(true);
+                            }}
                         />
                     ))}
                 </tbody>
             </table>
+
+            {modalAberto && (
+                <ModalComprarMoeda
+                    fechar={() => setModalAberto(false)}
+                    cripto={criptoSelecionada}
+                    carteiraId={carteiraId}
+                />
+            )}    
+
+            {modalVendaAberto && (
+                <ModalVenderMoeda
+                    fechar={() => setModalVendaAberto(false)}
+                    cripto={criptoSelecionadaVenda}
+                    carteiraId={carteiraId}
+                />
+            )}
         </section>
     );
 }

@@ -8,6 +8,7 @@ import { me } from "../../services/auth.services";
 import ModalCarteira from "../../components/ModalCarteira/ModalCarteira";
 import { getDashboard } from "../../services/dashboard.services";
 import { buscarPerfil } from "../../services/usuario.services";
+import SaldoConta from "../../components/SaldoConta/SaldoConta";
 
 
 async function Inicial(){
@@ -22,7 +23,8 @@ async function Inicial(){
     const cookieHeader = cookieStore.toString();
     const dashboard = await getDashboard(cookieHeader);
     const usuario = await me(cookieHeader);
-    const saldoUser = await buscarPerfil(cookieHeader);
+    const usuarioPerfil = await buscarPerfil(cookieHeader);
+    const { saldoBrl } = usuarioPerfil;
 
     return (    
         <>
@@ -34,16 +36,7 @@ async function Inicial(){
 
                     <p>Bem-vindo de volta a TC Criptomoedas.</p>
                 </div>
-
-                <div className="saldo-conta">   
-                    <p className="saldo-label">Saldo da conta</p>
-                    <span className="saldo-valor">
-                           {saldoUser.saldoBrl.toLocaleString("pt-BR", {
-                            style: "currency",
-                            currency: "BRL"
-                            })}
-                    </span>
-                </div>
+                <SaldoConta valor={saldoBrl}/>
 
             </header>
 
