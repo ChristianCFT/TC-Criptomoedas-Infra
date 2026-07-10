@@ -17,6 +17,8 @@ function Login(){
         
         e.preventDefault();
 
+        console.log("CLICOU NO BOTÃO");
+
         //validar os campos do formulário
         const result = loginSchema.safeParse({
             email, 
