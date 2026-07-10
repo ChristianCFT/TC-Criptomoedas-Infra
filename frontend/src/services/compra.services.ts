@@ -1,6 +1,9 @@
 import { CompraDTO } from "../tipos/compra";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL =
+    typeof window === "undefined"
+        ? process.env.API_URL
+        : process.env.NEXT_PUBLIC_API_URL;
 
 export async function comprarCriptomoeda(dados: CompraDTO): Promise<any> {
     const response = await fetch(`${API_URL}/compras`, {

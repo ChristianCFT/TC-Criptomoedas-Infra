@@ -1,6 +1,9 @@
 import { SaldoDTO, UsuarioDTO } from "../tipos/usuario";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL =
+    typeof window === "undefined"
+        ? process.env.API_URL
+        : process.env.NEXT_PUBLIC_API_URL;
 
 export async function buscarPerfil(cookie?: string): Promise<UsuarioDTO> {
     const response = await fetch(`${API_URL}/usuarios/perfil`, {
