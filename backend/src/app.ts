@@ -22,12 +22,12 @@ app.use(cors({
 app.use(express.json());
 
 app.use(cookieParser());
-app.use("/usuarios",usuarioRoutes);
-app.use("/carteiras",carteiraRoutes);
-app.use("/auth", authRoutes);
-app.use("/dashboard",visaoGeralRoutes);
-app.use("/compras",compraRoutes);
-app.use("/vendas",vendaRoutes);
-app.use("/moedas",moedaRoutes)
+app.use("/api/usuarios",usuarioRoutes);
+app.use("/api/carteiras",carteiraRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/dashboard",visaoGeralRoutes);
+app.use("/api/compras",compraRoutes);
+app.use("/api/vendas",vendaRoutes);
+app.use("/api/moedas",moedaRoutes)
 
 export { app };
