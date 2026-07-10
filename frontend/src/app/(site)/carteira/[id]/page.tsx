@@ -1,5 +1,5 @@
 import { cookies } from "next/dist/server/request/cookies";
-import Carteira from "../../../../pages/Carteira/Carteira";
+import Carteira from "../../../../screens/Carteira/Carteira";
 import { buscarCarteiraPorId } from "../../../../services/carteiras.services";
 
 interface PageProps {
