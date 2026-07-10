@@ -4,6 +4,7 @@ import { useState } from "react";
 import "./modalComprarMoeda.css";
 import { comprarCriptomoeda } from "../../services/compra.services";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 interface ModalComprarMoedaProps {
     fechar: () => void;
@@ -19,31 +20,41 @@ function ModalComprarMoeda({ fechar, cripto , carteiraId}: ModalComprarMoedaProp
     const router = useRouter();
 
     async function comprarMoeda() {
-
+        
         if (valor.trim() === "") {
-            alert("Digite o valor da compra.");
+            toast.error("Digite o valor da compra.");
+            return;
+        }
+
+        const valorConvertido = Number(valor);
+
+        if (valorConvertido <= 0) {
+            toast.error("O valor da compra deve ser maior que zero!");
             return;
         }
 
         try {
-
             await comprarCriptomoeda({
                 carteiraId: carteiraId,
                 criptoId: cripto.id,
-                valorCompraBrl: Number(valor)
+                valorCompraBrl: valorConvertido
             });
 
+            toast.success("Compra realizada com sucesso!");
             setValor("");
             fechar();
             router.refresh();
 
-        } catch (error) {
+        } catch (error: any) {
+            console.log("Aviso: Compra barrada pelo backend.", error.response?.data);
+            const mensagemDoBackend = 
+                error.response?.data?.message || 
+                error.response?.data?.error || 
+                error.message || 
+                "Erro ao comprar moeda.";
 
-            console.error(error);
-            alert("Erro ao comprar moeda.");
-
+            toast.error(mensagemDoBackend);
         }
-
     }
 
     return (

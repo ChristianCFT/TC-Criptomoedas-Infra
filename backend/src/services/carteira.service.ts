@@ -62,11 +62,21 @@ export class CarteiraService {
         };
     }
 
-    async deleteCarteira(id: number, usuarioId: number){
+   // Encontre a sua função de deletar no service e substitua por esta lógica:
+
+    async deleteCarteira(carteiraId: number, usuarioId: number) {
+        const temMoeda = await prisma.carteiraCripto.findFirst({
+            where: { carteiraId: carteiraId }
+        });
+
+        if (temMoeda) {
+            throw new Error("CARTEIRA_NAO_VAZIA");
+        }
+
         await prisma.carteira.delete({
             where: {
-                id, 
-                usuarioId
+                id: carteiraId,
+                usuarioId: usuarioId 
             }
         });
     }

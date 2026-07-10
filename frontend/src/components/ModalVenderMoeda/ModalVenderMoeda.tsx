@@ -4,11 +4,12 @@ import { useState } from "react";
 import "./modalVenderMoeda.css";
 import { venderCriptomoeda } from "../../services/venda.services";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 interface ModalVenderMoedaProps {
     fechar: () => void;
-    cripto: any,
-    carteiraId: number,
+    cripto: any;
+    carteiraId: number;
 }
 
 function ModalVenderMoeda({ fechar , cripto, carteiraId}: ModalVenderMoedaProps) {
@@ -16,32 +17,42 @@ function ModalVenderMoeda({ fechar , cripto, carteiraId}: ModalVenderMoedaProps)
     const [quantidade, setQuantidade] = useState("");
     const router = useRouter();
 
-    async function venderMoeda() {
+    function preencherMaximo() {
+        if (cripto && cripto.quantidade) {
+            setQuantidade(String(cripto.quantidade));
+        }
+    }
 
+    async function venderMoeda() {
+    
         if (quantidade.trim() === "") {
-            alert("Digite a quantidade da moeda.");
+            toast.error("Digite a quantidade da moeda");
             return;
         }
 
-        try {
+        const quantidadeConvertida = Number(quantidade);
 
+        if (quantidadeConvertida <= 0) {
+            toast.error("A quantidade deve ser maior que zero!");
+            return; 
+        }
+
+        try {
             await venderCriptomoeda({
                 carteiraId: carteiraId,
                 criptoId: cripto.id,
-                quantidade: Number(quantidade)
+                quantidade: quantidadeConvertida
             });
 
+            toast.success("Venda realizada com sucesso");
             setQuantidade("");
             fechar();
             router.refresh();
 
         } catch (error) {
-
             console.error(error);
-            alert("Erro ao vender moeda.");
-
+            toast.error("Erro ao vender moeda");
         }
-
     }
 
     return (
@@ -68,14 +79,27 @@ function ModalVenderMoeda({ fechar , cripto, carteiraId}: ModalVenderMoedaProps)
                         Quantidade da moeda
                     </label>
 
-                    <input
-                        id="quantidadeVenda"
-                        type="number"
-                        value={quantidade}
-                        onChange={(e) => setQuantidade(e.target.value)}
-                        placeholder="Quantidade"
-                    />
+                    <div className="input-group">
+                        <input
+                            id="quantidadeVenda"
+                            type="number"
+                            value={quantidade}
+                            onChange={(e) => setQuantidade(e.target.value)}
+                            placeholder="Quantidade"
+                        />
+                        
+                        <button 
+                            type="button" 
+                            className="btn-maximo"
+                            onClick={preencherMaximo}
+                        >
+                            Máximo
+                        </button>
+                    </div>
 
+                    <span className="saldo-disponivel">
+                        Saldo disponível: {cripto?.quantidade}
+                    </span>
                 </div>
 
                 <div className="modal-footer">

@@ -14,13 +14,6 @@ interface CarteiraProps {
 }
 
 function Carteira({ carteira }: CarteiraProps) {
-
-    console.log("Carteira recebida:", carteira);
-
-    if (!carteira) {
-        throw new Error("Carteira é undefined");
-    }
-
     const router = useRouter();
     const [saldoBrl, setSaldoBrl] = useState<number>(0);
 

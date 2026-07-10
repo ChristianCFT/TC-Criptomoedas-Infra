@@ -3,6 +3,7 @@ import { useState } from "react";
 import { create } from "../../services/carteiras.services";
 import { useRouter } from "next/navigation";
 import "./modalCarteira.css"
+import { toast } from "sonner";
 
 function ModalCarteira(){
 
@@ -13,7 +14,7 @@ function ModalCarteira(){
     async function criarCarteira() {
 
         if (nomeCarteira.trim() === "") {
-            alert("Digite um nome para a carteira.");
+            toast.error("Digite um nome para a carteira.");
             return;
         }
 
@@ -23,6 +24,7 @@ function ModalCarteira(){
                 nome: nomeCarteira
             });
 
+            toast.success("Carteira Criado sucesso");
             setNomeCarteira("");
             setAberto(false);
             router.refresh();

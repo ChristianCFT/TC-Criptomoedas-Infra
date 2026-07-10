@@ -39,11 +39,22 @@ export class CarteiraController{
 
             await carteiraService.deleteCarteira(id, user.id);
 
-            res.status(204).send();
+            return res.status(200).json({ 
+                message: "Carteira deletada com sucesso!" 
+            });
 
-        } catch (error) {
-            res.status(404).json({ error: "Carteira não encontrada." });
+        } catch (error: any) {
+            
+            if (error.message === "CARTEIRA_NAO_VAZIA") {
+                return res.status(400).json({ 
+                    message: "Não é possível deletar a carteira porque ela não está vazia." 
+                });
+            }
+
+            console.error("Erro interno ao deletar carteira:", error);
+            return res.status(500).json({ 
+                message: "Erro interno no servidor." 
+            });
         }
     }
-
 }
