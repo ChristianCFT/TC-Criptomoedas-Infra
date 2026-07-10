@@ -2,29 +2,20 @@ import moeda from "../../assets/images/moeda.jpg";
 import carteiraImg from "../../assets/images/carteira.jpg";
 import ListaCarteiras from '../../components/ListaCarteiras/ListaCarteiras';
 import "./inicial.css";
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
-import { me } from "../../services/auth.services";
 import ModalCarteira from "../../components/ModalCarteira/ModalCarteira";
-import { getDashboard } from "../../services/dashboard.services";
-import { buscarPerfil } from "../../services/usuario.services";
 import SaldoConta from "../../components/SaldoConta/SaldoConta";
 
+interface InicialProps {
+    dashboard: any;
+    usuario: any;
+    saldoBrl: number;
+}
 
-async function Inicial(){
-
-    const cookieStore = await cookies();
-    const token = cookieStore.get("token");
-
-    if(!token){
-        redirect("/");
-    }
-
-    const cookieHeader = cookieStore.toString();
-    const dashboard = await getDashboard(cookieHeader);
-    const usuario = await me(cookieHeader);
-    const usuarioPerfil = await buscarPerfil(cookieHeader);
-    const { saldoBrl } = usuarioPerfil;
+async function Inicial({
+    dashboard,
+    usuario,
+    saldoBrl,
+}: InicialProps){
 
     return (    
         <>
