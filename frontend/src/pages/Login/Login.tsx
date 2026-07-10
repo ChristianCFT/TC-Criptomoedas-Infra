@@ -80,7 +80,7 @@ function Login(){
 
                         <a id="esqueci-senha" href="#">Esqueci minha senha</a>
 
-                        <button className="btn-login" type="submit" id="btn-acessar">ACESSAR CONTA</button>
+                        <button className="btn-login" type="submit" id="btn-acessar"onClick={() => alert("Clique funcionando")}>ACESSAR CONTA</button>
 
                     </div>
 
