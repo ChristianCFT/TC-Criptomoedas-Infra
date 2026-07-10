@@ -17,7 +17,9 @@ function Login(){
         
         e.preventDefault();
 
-        console.log("CLICOU NO BOTÃO");
+        alert("Entrou no handleSubmit");
+
+        console.log("Entrou no handleSubmit");
 
         //validar os campos do formulário
         const result = loginSchema.safeParse({
