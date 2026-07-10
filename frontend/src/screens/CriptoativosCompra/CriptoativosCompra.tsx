@@ -25,6 +25,7 @@ function CriptoativosCompra({ moedas, carteiraId }: CriptoativosProps) {
 
                     if (usuarioPerfil.saldoBrl !== undefined) {
                         setSaldoBrl(usuarioPerfil.saldoBrl);
+                        carregarPerfil();
                     }
                     if(carteiraDados.nome)
                         setNomeCarteira(carteiraDados.nome)

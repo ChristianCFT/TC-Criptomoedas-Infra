@@ -13,11 +13,17 @@
 
 .card-carteira .card-header {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-carteira {
+    display: flex;
     align-items: center;
 }
 
 .titulo-carteira {
-    color: #1f2937; 
+    color: #1f2937;
 }
 
 .card-carteira img {
@@ -25,6 +31,34 @@
     height: 60px;
     border-radius: 15px;
     margin-right: 1rem;
+}
+
+.excluir-carteira {
+    display: flex;
+    align-items: center;
+}
+
+.btn-excluir-carteira {
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: #f3f4f6;
+    color: #6b7280;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all .25s ease;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-excluir-carteira:hover {
+    background: #ef4444;
+    color: white;
+    transform: scale(1.08);
 }
 
 .card-carteira .info-saldo {

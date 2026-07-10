@@ -10,12 +10,14 @@ Na raiz do projeto, crie um arquivo chamado `.env` e adicione:
 NEXT_PUBLIC_API_URL=http://localhost:3001
 ```
 
+> A variável `NEXT_PUBLIC_API_URL` define a URL da API utilizada pelo frontend.
+
 ## Instalação
 
 Instale as dependências:
 
 ```bash
-$ npm install
+npm install
 ```
 
 ## Execução
@@ -23,7 +25,7 @@ $ npm install
 Inicie o servidor de desenvolvimento:
 
 ```bash
-$ npm run dev
+npm run dev
 ```
 
 O projeto estará disponível em:

@@ -23,6 +23,7 @@ function Criptoativos({moedas}: CriptoativosProps) {
 
                     if (usuarioPerfil.saldoBrl !== undefined) {
                         setSaldoBrl(usuarioPerfil.saldoBrl);
+                        carregarPerfil();
                     }
                     if (usuarioPerfil.nome) {
                         setNomeUsuario(usuarioPerfil.nome);
