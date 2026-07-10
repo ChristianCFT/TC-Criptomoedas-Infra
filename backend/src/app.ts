@@ -14,7 +14,9 @@ import { moedaRoutes } from "./routes/moeda.routes";
 const app = express();
 
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000",
+    "http://100.66.135.111"
+    ],
     credentials: true,
 }));
 app.use(express.json());
