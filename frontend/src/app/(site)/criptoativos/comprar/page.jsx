@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import CriptoativosCompra from "../../../../pages/CriptoativosCompra/CriptoativosCompra";
+import CriptoativosCompra from "../../../../screens/CriptoativosCompra/CriptoativosCompra";
 import { listarMoedas } from "../../../../services/moeda.services";
 
 export default async function Page({ searchParams }) {

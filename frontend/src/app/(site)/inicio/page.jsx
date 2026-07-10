@@ -3,7 +3,7 @@ import "../../../styles/global.css";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-import Inicial from "../../../pages/Inicial/Inicial";
+import Inicial from "../../../screens/Inicial/Inicial";
 import { me } from "../../../services/auth.services";
 import { getDashboard } from "../../../services/dashboard.services";
 import { buscarPerfil } from "../../../services/usuario.services";

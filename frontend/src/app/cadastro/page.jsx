@@ -1,4 +1,4 @@
-import Cadastro from "../../pages/Cadastro/Cadastro";
+import Cadastro from "../../screens/Cadastro/Cadastro";
 
 export default function Page() {
     return <Cadastro />;
