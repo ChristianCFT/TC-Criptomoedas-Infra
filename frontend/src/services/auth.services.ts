@@ -1,6 +1,7 @@
 import { CreateUserDTO, loginDTO, loginResponse } from "../tipos/auth";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
+console.log("API_URL =", API_URL);
 
 export async function create(dados: CreateUserDTO): Promise<void> {
 
