@@ -23,7 +23,8 @@ export async function create(dados: CreateUserDTO): Promise<void> {
 
 export async function login(dados: loginDTO) : Promise<loginResponse>{
 
-    const response = await fetch(`${API_URL}/auth/login`,{
+    //const response = await fetch(`${API_URL}/auth/login`,{
+    const response = await fetch("/api/auth/login", {
         method: "POST",
         headers:{
             "Content-Type": "application/json",
