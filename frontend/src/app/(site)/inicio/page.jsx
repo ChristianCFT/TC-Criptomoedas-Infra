@@ -10,7 +10,14 @@ import { buscarPerfil } from "../../../services/usuario.services";
 
 export default async function Home() {
     const cookieStore = await cookies();
+
+    console.log("TODOS OS COOKIES:");
+    console.log(cookieStore.getAll());
+
     const token = cookieStore.get("token");
+
+    console.log("TOKEN:");
+    console.log(token);
 
     if (!token) {
         redirect("/");
