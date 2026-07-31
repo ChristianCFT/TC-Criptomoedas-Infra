@@ -24,17 +24,19 @@ export class AuthController {
         try{
             const { email, senha } = req.body;
             const resposta = await authService.login(email, senha);
-            res.cookie("token", resposta.token,{
-                httpOnly: true,
-                secure: true,
-                sameSite: "none",
-                path: "/",
-            })
+            //res.cookie("token", resposta.token,{
+            //    httpOnly: true,
+            //    secure: true,
+            //    sameSite: "none",
+            //    path: "/",
+            //})
 
             res.json({
                 sucess:true,
-                message: "login realizado com sucesso!"
-            })
+                token: resposta.token,
+                user: resposta.user,
+                //message: "login realizado com sucesso!"
+            });
 
 
         } catch(error){
@@ -42,7 +44,7 @@ export class AuthController {
                 message: 
                 error instanceof Error
                 ? error.message
-                : "Erro ao criar usuário!"
+                : "Erro ao realizar login!"
             })
         }
     }
