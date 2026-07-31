@@ -26,8 +26,9 @@ export class AuthController {
             const resposta = await authService.login(email, senha);
             res.cookie("token", resposta.token,{
                 httpOnly: true,
-                secure: false,
-                sameSite: "lax",
+                secure: true,
+                sameSite: "none",
+                path: "/",
             })
 
             res.json({
