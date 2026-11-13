@@ -11,10 +11,6 @@ Repositório responsável pela infraestrutura da aplicação **TC Criptomoedas**
 
 > Trabalho desenvolvido para a disciplina de **Programação Web**.
 ---
-## 🌐 Aplicação Online
-
-**Frontend:** https://eyes-default-thou-stats.trycloudflare.com
----
 
 # 📖 Sobre o Projeto
 
